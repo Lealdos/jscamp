@@ -34,8 +34,64 @@ jobsListingSection.addEventListener('click', function(event) {
   }
 })
 
-const filter = document.querySelector('#filter-technology')
+const technologyFilter = document.querySelector('#filter-technology')
+const LocationFilter = document.querySelector('#location')
+const experienceLevelFilter = document.querySelector('#experience-level')
 
-filter.addEventListener('change', function () {
-  console.log(filter.value)
+const filter = document.querySelector('.search-filters')
+
+
+
+technologyFilter.addEventListener('change', function () {
+  const technologyFilterSelected = technologyFilter.value.toLowerCase()
+  const jobsNodes = getNodes('article.job-listing-card');
+  console.log(technologyFilterSelected)
+
+  jobsNodes.forEach(article => {
+    const technology = article.querySelector('p').textContent.toLowerCase();
+ 
+    if (technology.includes(technologyFilterSelected)) {
+      article.style.display = 'block';
+    } else {
+      article.style.display = 'none';
+    }
+  });
+
 })
+
+LocationFilter.addEventListener('change', function () {
+  const jobFilter = LocationFilter.value.toLowerCase()
+  const jobsNodes = getNodes('article.job-listing-card');
+  
+  jobsNodes.forEach(article => {
+    const localeFilter = article.querySelector('small').textContent.toLowerCase();
+ 
+    if (localeFilter.includes(jobFilter)) {
+      article.style.display = 'block';
+    } else {
+      article.style.display = 'none';
+    }
+  });
+
+})
+
+
+
+function getNodes(containerSelector) {
+  const containers = document.querySelectorAll(containerSelector);
+
+  if (!containers) {
+    console.error(`Error: No se encontró el elemento con el ID "${containerSelector}".`);
+    return [];
+  }
+
+
+  // const allNodes = container.querySelectorAll('article.job-listing-card');
+
+  return containers;
+}
+
+
+
+
+
