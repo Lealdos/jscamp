@@ -25,8 +25,19 @@
   --hsla-example: hsla(210, 100%, 56%, 1);
 }
 
+select {
+  color:var(--text-primary);
+  background: var(--primary);
+  border-radius:5px;
+  padding: 0.5rem; 
+  
+}
 
-
+select:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
 
 
 
@@ -460,4 +471,13 @@ article {
     background: #4caf50;
     pointer-events: none;
   }
+}
+
+
+ #job-result{
+margin: 0.5rem 1.5rem;
+}
+
+option {
+  border-radius: 10px;
 }
