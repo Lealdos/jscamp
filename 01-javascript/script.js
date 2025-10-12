@@ -46,7 +46,10 @@ technologyFilter.addEventListener('change', function () {
   const technologyFilterSelected = technologyFilter.value.toLowerCase()
   const jobsNodes = getNodes('article.job-listing-card');
 
-  FilterSearch(technologyFilterSelected,jobsNodes)
+  FilterSearch(technologyFilterSelected,jobsNodes,'p')
+
+  console.log(FilterSearch(technologyFilterSelected,jobsNodes))
+
 
 })
 
@@ -54,7 +57,7 @@ LocationFilter.addEventListener('change', function () {
   const jobFilter = LocationFilter.value.toLowerCase()
   const jobsNodes = getNodes('article.job-listing-card');
   
-  FilterSearch(jobFilter,jobsNodes)
+  FilterSearch(jobFilter,jobsNodes,'small')
 
 })
 
@@ -74,10 +77,10 @@ function getNodes(containerSelector) {
 
 
 
-function FilterSearch (filterelement,NodeList) {
+function FilterSearch (filterelement,NodeList,HTMLelementToFilter) {
 
   NodeList.forEach(article => {
-    const localeFilter = article.querySelector('small').textContent.toLowerCase();
+    const localeFilter = article?.querySelector(HTMLelementToFilter)?.textContent?.toLowerCase();
  
     if (localeFilter.includes(filterelement)) {
       article.style.display = 'flex';
