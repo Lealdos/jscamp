@@ -481,3 +481,14 @@ margin: 0.5rem 1.5rem;
 option {
   border-radius: 10px;
 }
+
+article a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  
+  &:visited{
+    color: var(--text-primary);
+  }
+
+}
